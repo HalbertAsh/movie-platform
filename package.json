@@ -1,33 +1,49 @@
 {
-  "name": "my-react-app",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "my-project-frontend",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "test": "vitest",
+        "test:ui": "vitest --ui",
+        "test:run": "vitest run"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.2.2",
+        "@tanstack/react-query": "^5.99.2",
+        "@tanstack/react-router": "^1.168.23",
+        "lucide-react": "^1.8.0",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-router-dom": "^6"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.2.2",
+        "@testing-library/jest-dom": "^6",
+        "@testing-library/react": "^14",
+        "@types/node": "^25.6.0",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@vitejs/plugin-react": "^4",
+        "@vitest/ui": "^1",
+        "autoprefixer": "^10.5.0",
+        "eslint": "^8",
+        "eslint-plugin-react-hooks": "^4",
+        "eslint-plugin-react-refresh": "^0.4",
+        "jsdom": "^29.1.1",
+        "playwright": "^1",
+        "postcss": "^8.5.10",
+        "prettier": "^3",
+        "react-error-boundary": "^6.1.1",
+        "stylelint": "^17.8.0",
+        "stylelint-config-tailwindcss": "^1.0.1",
+        "tailwindcss": "^4.2.2",
+        "typescript": "^5",
+        "vite": "^5",
+        "vitest": "^1"
+    }
 }
