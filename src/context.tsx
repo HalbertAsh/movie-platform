@@ -1,0 +1,21 @@
+import { createContext, useContext } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
+import type { Draft, Preference, RatingEntry, Review, User } from './data/types';
+export type Page = 'home'|'catalog'|'search'|'movie'|'profile'|'publicProfile'|'author'|'edit'|'auth'|'authorAuth'|'studio';
+export type EchoContext = {
+  page: Page; navigate: (page:Page)=>void; movieId:number; openMovie:(id:number)=>void; authorName:string; openAuthor:(name:string)=>void; publicUser:string; openUser:(name:string)=>void;
+  query:string; setQuery:(q:string)=>void; searchTab:string; setSearchTab:(s:string)=>void;
+  logged:boolean; setLogged:(v:boolean)=>void; authorLogged:boolean; setAuthorLogged:(v:boolean)=>void; authMode:'login'|'register'; setAuthMode:(v:'login'|'register')=>void;
+  user:User; setUser:Dispatch<SetStateAction<User>>; prefs:Preference; setPrefs:Dispatch<SetStateAction<Preference>>;
+  authorPrefs:number[];setAuthorPrefs:Dispatch<SetStateAction<number[]>>;
+  reviews:Review[];setReviews:Dispatch<SetStateAction<Review[]>>;ratings:RatingEntry[];setRatings:Dispatch<SetStateAction<RatingEntry[]>>;
+  drafts:Record<number,Draft>;setDrafts:Dispatch<SetStateAction<Record<number,Draft>>>;
+  pendingMovie:number|null;setPendingMovie:(n:number|null)=>void;
+  likedReviews:number[];toggleReviewLike:(id:number)=>void;
+  likedComments:number[];toggleCommentLike:(id:number)=>void;
+  notice:string;showNotice:(s:string)=>void;
+  modal:string|null;setModal:(s:string|null)=>void;
+  studioPage:string;setStudioPage:(s:string)=>void;
+};
+export const Context=createContext<EchoContext|null>(null);
+export const useEcho=()=>{const ctx=useContext(Context);if(!ctx)throw new Error('Echo context missing');return ctx;};
