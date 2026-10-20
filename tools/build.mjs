@@ -1,0 +1,10 @@
+import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const dest = resolve(root, 'dist');
+await rm(dest, { recursive: true, force: true });
+await mkdir(dest, { recursive: true });
+for (const file of ['index.html', 'src', 'assets']) await cp(resolve(root, file), resolve(dest, file), { recursive: true });
+await writeFile(resolve(dest, '.nojekyll'), '');
+console.log('Готово: dist/');

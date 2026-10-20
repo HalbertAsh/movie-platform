@@ -1,70 +1,49 @@
-# My React App
+# Эхо — основной сайт v10.28
 
-This is a simple React application that demonstrates the basic structure and components of a React project.
+Это **полный комплект исходных файлов текущей версии сайта** для загрузки на GitHub. Лендинга здесь нет.
 
-## Getting Started
+## Состав
 
-To get started with this project, follow the instructions below.
+- `index.html` — входная страница.
+- `src/app.js` — логика интерфейса и данные демонстрационной версии.
+- `src/styles.css` — все стили и адаптивная типографика.
+- `assets/echo-mark.png` — логотип/иконка.
+- `package.json`, `tools/` — запуск и сборка без сторонних зависимостей.
+- `.nojekyll` — публикация на GitHub Pages без обработки Jekyll.
 
-### Prerequisites
+**Важно:** исходная версия v10.28 была автономной HTML-страницей. Здесь её CSS и JavaScript вынесены в отдельные файлы **без переписывания приложения на React**. Это полноценный сайт, но **не React/TypeScript-проект**. Старые `App.tsx`, `vite.config.ts`, `src/*.tsx` и зависимости Vite/React для этой версии не нужны.
 
-Make sure you have the following installed on your machine:
+## Запуск
 
-- Node.js (version 14 or higher)
-- npm (Node Package Manager)
+Можно открыть `index.html` в браузере. Для локального сервера с установленным Node.js:
 
-### Installation
-
-1. Clone the repository:
-
-   ```
-   git clone <repository-url>
-   ```
-
-2. Navigate to the project directory:
-
-   ```
-   cd my-react-app
-   ```
-
-3. Install the dependencies:
-
-   ```
-   npm install
-   ```
-
-### Running the Application
-
-To run the application in development mode, use the following command:
-
-```
-npm start
+```bash
+npm run dev
 ```
 
-This will start the development server and open the application in your default web browser.
+Откройте `http://localhost:5173`. Ничего устанавливать через `npm install` не нужно: внешних npm-зависимостей нет.
 
-### Building for Production
+Сборка в `dist/`:
 
-To create a production build of the application, use the following command:
-
-```
+```bash
 npm run build
 ```
 
-This will generate an optimized build of the application in the `build` directory.
+## Полная замена старого репозитория `movie-platform`
 
-### Testing
+**Лучше использовать GitHub Desktop**, потому что загрузка через кнопку `Add file` в браузере не удалит старые файлы автоматически.
 
-To run the tests for the application, use the following command:
+1. В GitHub Desktop откройте или клонируйте существующий репозиторий `movie-platform` (ветка `main`).
+2. **Создайте резервную ветку** перед заменой, например `backup-before-echo-v10.28`, или скачайте архив старого репозитория через `Code → Download ZIP`.
+3. В GitHub Desktop выберите `Repository → Show in Explorer`.
+4. В открытой папке репозитория удалите **старые файлы проекта**, но **ни в коем случае не удаляйте скрытую папку `.git`**. Если есть важные личные настройки или секреты, сохраните их отдельно, не загружайте на GitHub.
+5. Распакуйте этот ZIP и **скопируйте содержимое папки проекта** (файл `index.html`, папки `src`, `assets`, `tools` и остальные файлы) **в корень репозитория**, рядом со скрытой папкой `.git`. Не копируйте дополнительную внешнюю папку целиком.
+6. Вернитесь в GitHub Desktop. Проверьте список изменённых файлов. Укажите `Echo v10.28 — full site update`, нажмите `Commit to main`, затем `Push origin`.
 
-```
-npm test
-```
+## GitHub Pages
 
-### Components
+После отправки файлов в репозиторий: `Settings → Pages → Build and deployment → Deploy from a branch → main → / (root) → Save`. Через некоторое время GitHub выдаст адрес сайта. Для этого варианта **не нужен Vite, npm build или GitHub Actions**.
 
-- **MyButton**: A functional component that renders a button with the text "I'm a button".
+## Ограничения
 
-### License
-
-This project is licensed under the MIT License.
+Это фронтенд-прототип: настоящие аккаунты, серверная модерация, общая база данных и синхронизация между устройствами не подключены. Часть действий и предпочтений хранится только в `localStorage` браузера, демонстрационные счётчики не отражают реальных пользователей.
