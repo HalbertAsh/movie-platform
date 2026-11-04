@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Локальные сборки, предпросмотры и результаты тестов
+/preview.html
+/test-results.txt
+/Эхо-Метрика-превью.png

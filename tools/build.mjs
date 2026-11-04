@@ -1,0 +1,14 @@
+import { cp,mkdir,rm,readFile,writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname,resolve } from 'node:path';
+import { apiUrl,analyticsSettings,metrikaId,injectConfig } from './config.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const dest=resolve(root,'dist');
+const config=await apiUrl(root);
+const analytics=await analyticsSettings(root);
+const metrika=await metrikaId(root);
+await rm(dest,{recursive:true,force:true});await mkdir(dest,{recursive:true});
+for(const file of ['src','assets'])await cp(resolve(root,file),resolve(dest,file),{recursive:true});
+await writeFile(resolve(dest,'index.html'),injectConfig(await readFile(resolve(root,'index.html'),'utf8'),config,analytics,metrika));
+await writeFile(resolve(dest,'.nojekyll'),'');
+console.log(`Готово: dist/ (${config?'API '+config:'демо-режим'})`);
